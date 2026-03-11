@@ -1,14 +1,11 @@
 "use client"
 
-import * as React from "react"
-import { Moon, Sun } from "lucide-react"
-import { useTheme } from "next-themes"
-
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import UserIcon from "./UserIcon"
@@ -16,9 +13,11 @@ import UserIcon from "./UserIcon"
 import { VscListSelection } from "react-icons/vsc";
 import { links } from "@/utils/link"
 import Link from "next/link"
-
+import SignOutLink from "./SignOutLink"
+import { Show, SignInButton, SignUpButton } from "@clerk/nextjs";
 
 const LinksDropdown = () => {
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -29,15 +28,35 @@ const LinksDropdown = () => {
       </DropdownMenuTrigger>
 
       <DropdownMenuContent align="end">
-        {
-          links.map(item => (
-            <DropdownMenuItem key={item.label}>
-              <Link href={item.href} className="capitalize">
-                {item.label}
-              </Link>
-            </DropdownMenuItem>
-          ))
-        }
+        <Show when="signed-out">
+          <DropdownMenuItem>
+            <SignInButton mode="modal" />
+          </DropdownMenuItem>
+          
+          <DropdownMenuSeparator/>
+
+          <DropdownMenuItem>
+            <SignUpButton mode="modal" />
+          </DropdownMenuItem>
+        </Show>
+
+        <Show when="signed-in">
+          {
+            links.map(item => (
+              <DropdownMenuItem key={item.label}>
+                <Link href={item.href} className="capitalize">
+                  {item.label}
+                </Link>
+              </DropdownMenuItem>
+            ))
+          }
+
+          <DropdownMenuSeparator/>
+
+          <DropdownMenuItem>
+            <SignOutLink />
+          </DropdownMenuItem>
+        </Show>
       </DropdownMenuContent>
     </DropdownMenu>
   )
