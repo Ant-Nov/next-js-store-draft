@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  typescript: {
+    ignoreBuildErrors: false,
+  },
   images: {
     remotePatterns: [
       {
@@ -8,6 +11,12 @@ const nextConfig: NextConfig = {
         hostname: 'images.pexels.com',
         port: '',
         pathname: '/photos/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'pqbsygsjsrzhwvmiqitt.supabase.co',
+        port: '',
+        pathname: '/**',
       },
     ],
   },

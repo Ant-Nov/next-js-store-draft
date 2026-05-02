@@ -3,7 +3,7 @@ import Link from "next/link"
 import { Card, CardDescription, CardHeader, CardTitle } from "../ui/card"
 import Image from "next/image"
 import { formatCurrency } from "@/utils/format"
-import FavoriteToggleButton from "./FavoriteToggleButton"
+import FavoriteToggleForm from "./FavoriteToggleForm"
 
 const ProductsList = ({ products }: { products: Product[] }) => {
   return (
@@ -32,7 +32,7 @@ const ProductsList = ({ products }: { products: Product[] }) => {
             </Link>
 
             <div className="absolute bottom-8 right-8 z-10">
-              <FavoriteToggleButton productId={product.id} />
+              <FavoriteToggleForm productId={product.id} />
             </div>
           </article>
         ))

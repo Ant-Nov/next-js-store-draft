@@ -11,7 +11,7 @@ const SignOutLink = () => {
 
   return (
     <SignOutButton>
-      <Link href="/" onClick={handleLogout}>Logout</Link>
+      <Link href="/" className="w-full" onClick={handleLogout}>Logout</Link>
     </SignOutButton>
   )
 }

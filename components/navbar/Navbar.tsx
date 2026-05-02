@@ -6,7 +6,7 @@ import LinksDropdown from "./LinksDropdown"
 import Logo from "./Logo"
 import NavSearch from "./NavSearch"
 
-const Navbar = () => {
+const Navbar = async () => {
   return (
     <nav className="border-b">
       <Container className="flex flex-col sm:flex-row items-center gap-4 justify-between py-3">
@@ -19,7 +19,7 @@ const Navbar = () => {
         <div className="flex gap-4 items-center">
           <CartButton/>
           <DarkMode/>
-          <LinksDropdown/>
+          <LinksDropdown />
         </div>
       </Container>
     </nav>

@@ -1,6 +1,13 @@
-const Reviews = () => {
+import ReviewsList from "@/components/reviews/ReviewsList"
+import { getMyReviews } from "@/utils/actions"
+
+const Reviews = async () => {
+  const myReviews = await getMyReviews();
+
   return (
-    <div>Reviews</div>
+    <>
+      <ReviewsList reviews={myReviews} path="/reviews"/>
+    </>
   )
 }
 export default Reviews

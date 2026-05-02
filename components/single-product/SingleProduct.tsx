@@ -8,7 +8,7 @@ import {
 import Image from "next/image"
 import { formatCurrency } from "@/utils/format"
 import Link from "next/link"
-import FavoriteToggleButton from "../products/FavoriteToggleButton"
+import FavoriteToggleForm from "../products/FavoriteToggleForm"
 
 const SingleProduct = (product: Product) => {
   return (
@@ -32,7 +32,7 @@ const SingleProduct = (product: Product) => {
       </Link>
 
       <div className="absolute top-2 right-2 z-10">
-        <FavoriteToggleButton productId={product.id} />
+        <FavoriteToggleForm productId={product.id} />
       </div>
     </article>
   )
