@@ -7,11 +7,11 @@ import {
 } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
 import { useSearchParams } from 'next/navigation';
-import { useCallback } from 'react';
+import { Suspense, useCallback } from 'react';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
-const CheckoutPage = () => {
+const CheckoutContent = () => {
   const searchParams = useSearchParams();
   const orderId = searchParams.get('orderId') || '';
   const cartId = searchParams.get('cartId') || '';
@@ -29,6 +29,14 @@ const CheckoutPage = () => {
         <EmbeddedCheckout />
       </EmbeddedCheckoutProvider>
     </div>
+  )
+}
+
+const CheckoutPage = () => {
+  return (
+    <Suspense>
+      <CheckoutContent />
+    </Suspense>
   )
 }
 export default CheckoutPage
